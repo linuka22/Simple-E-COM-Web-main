@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
-import { useNavigate } from "react-router-dom"; // Import useNavigate to navigate between pages
+import { useNavigate } from "react-router-dom"; 
 import "../CSS/AdminPage.css";
 
 const AdminPage = () => {
   const [products, setProducts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(""); // State to store selected category
-  const navigate = useNavigate(); // Hook to navigate
+  const [selectedCategory, setSelectedCategory] = useState(""); 
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    // Fetch inventory from Firebase
+    
     const db = getDatabase();
     const productsRef = ref(db, "products");
 
@@ -27,7 +27,7 @@ const AdminPage = () => {
     return () => unsubscribe();
   }, []);
 
-  // Sorting Algorithms
+  
   const quickSort = (arr) => {
     if (arr.length <= 1) return arr;
     const pivot = arr[0];
@@ -73,7 +73,7 @@ const AdminPage = () => {
     return arr;
   };
 
-  // Recursive Search
+  
   const searchProducts = (term) => {
     const lowerTerm = term.toLowerCase();
     const filtered = products.filter(
@@ -82,7 +82,7 @@ const AdminPage = () => {
     setFilteredProducts(filtered);
   };
 
-  // Filter products by selected category
+  
   const filterByCategory = (category) => {
     setSelectedCategory(category);
     const filtered = products.filter((item) => item.category === category);
@@ -94,7 +94,7 @@ const AdminPage = () => {
       <h1>Admin Dashboard</h1>
       <div className="top-bar">
         <button
-          onClick={() => navigate("/visualization")} // Navigate to visualization page
+          onClick={() => navigate("/visualization")} 
           className="visualization-button"
         >
           Visualization

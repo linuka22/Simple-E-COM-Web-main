@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
-import { db } from './Firebase'; // Import Firebase config
-import '../CSS/ProductGrid.css'; // Import the CSS file
+import { db } from './Firebase'; 
+import '../CSS/ProductGrid.css'; 
 
 const ProductGrid = () => {
   const categoryImages = {
@@ -13,14 +13,14 @@ const ProductGrid = () => {
   };
 
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(''); // Track selected category
-  const [inventory, setInventory] = useState([]); // State to store inventory from Firebase
+  const [selectedCategory, setSelectedCategory] = useState(''); 
+  const [inventory, setInventory] = useState([]); 
   const navigate = useNavigate();
 
   const slideshowImages = ['ad1.jpg', 'ad2.jpg', 'ad3.jpg', 'ad4.jpg', 'ad5.jpg'];
 
   useEffect(() => {
-    // Fetch inventory data from Firebase Realtime Database
+    
     const inventoryRef = ref(db, 'products');
     onValue(inventoryRef, (snapshot) => {
       const data = snapshot.val();
@@ -29,7 +29,7 @@ const ProductGrid = () => {
     });
   }, []);
 
-  // Filter products by selected category
+  
   const filteredInventory = selectedCategory
     ? inventory.filter((item) => item.category === selectedCategory)
     : inventory;
@@ -37,7 +37,7 @@ const ProductGrid = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slideshowImages.length);
-    }, 3000); // Change slide every 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, [slideshowImages.length]);
@@ -83,7 +83,7 @@ const ProductGrid = () => {
           <button
             key={cat}
             className={`category-button ${selectedCategory === cat ? 'active' : ''}`}
-            onClick={() => setSelectedCategory(cat)} // Set selected category
+            onClick={() => setSelectedCategory(cat)} 
           >
             <img
               src={categoryImages[cat]}
@@ -95,7 +95,7 @@ const ProductGrid = () => {
         ))}
         <button
           className="category-button"
-          onClick={() => setSelectedCategory('')} // Reset category filter
+          onClick={() => setSelectedCategory('')} 
         >
           <span>All Products</span>
         </button>
@@ -108,11 +108,11 @@ const ProductGrid = () => {
             <div
               key={item.id}
               className="product-card"
-              onClick={() => navigate(`/product/${item.id}`)} // Navigate to product details
-              style={{ flex: '1 1 calc(20% - 10px)', margin: '5px' }} // Adjust to show 5 in a row
+              onClick={() => navigate(`/product/${item.id}`)} 
+              style={{ flex: '1 1 calc(20% - 10px)', margin: '5px' }} 
             >
               <img
-                src={categoryImages[item.category] || categoryImages['Electronics']} // Fallback to Electronics image
+                src={categoryImages[item.category] || categoryImages['Electronics']} 
                 alt={item.name}
                 className="product-image"
               />

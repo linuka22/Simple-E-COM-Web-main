@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ref, set } from 'firebase/database';
-import { db } from './Firebase'; // Import Firebase config
-import '../CSS/AddProduct.css'; // Import the CSS file
+import { db } from './Firebase'; 
+import '../CSS/AddProduct.css'; 
 
 const AddProduct = () => {
   const [product, setProduct] = useState({
@@ -31,7 +31,7 @@ const AddProduct = () => {
     }
 
     try {
-      // Prepare product data to store in the Realtime Database
+      
       const productData = {
         id: product.id,
         name: product.name,
@@ -40,13 +40,13 @@ const AddProduct = () => {
         category: product.category,
       };
 
-      // Store the product data in Firebase Realtime Database
+      
       const productRef = ref(db, `products/${product.id}`);
       await set(productRef, productData);
 
       alert('Product added successfully!');
 
-      // Reset the form
+      
       setProduct({
         id: '',
         name: '',

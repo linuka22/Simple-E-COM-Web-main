@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import Chart from "chart.js/auto";
-import * as XLSX from "xlsx"; // Import xlsx library
+import * as XLSX from "xlsx"; 
 import { useNavigate } from "react-router-dom";
 import "../CSS/Visualization.css";
 
-let chartInstance = null; // Store chart instance globally
+let chartInstance = null; 
 
 const Visualization = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ const Visualization = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch inventory from Firebase
+    
     const db = getDatabase();
     const productsRef = ref(db, "products");
 
@@ -28,11 +28,11 @@ const Visualization = () => {
     return () => unsubscribe();
   }, []);
 
-  // Function to render the chart
+  
   const renderChart = () => {
     const ctx = document.getElementById("inventoryChart").getContext("2d");
 
-    // Destroy the previous chart if it exists
+    
     if (chartInstance) {
       chartInstance.destroy();
     }
@@ -46,7 +46,7 @@ const Visualization = () => {
       )
     );
 
-    // Create a new chart
+    
     chartInstance = new Chart(ctx, {
       type: chartType,
       data: {
@@ -62,17 +62,17 @@ const Visualization = () => {
     });
   };
 
-  // Function to generate Excel report
+  
   const generateReport = () => {
     const worksheet = XLSX.utils.json_to_sheet(products);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
 
-    // Generate file and download it
+    
     XLSX.writeFile(workbook, "product_report.xlsx");
   };
 
-  // Handle Calculate button click
+  
   const handleCalculateClick = () => {
     navigate("/calculate");
   };

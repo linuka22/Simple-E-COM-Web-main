@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
-import { db } from './Firebase'; // Import Firebase config
-import '../CSS/SearchResults.css'; // Import the CSS file
+import { db } from './Firebase'; 
+import '../CSS/SearchResults.css'; 
 
 const SearchResults = () => {
   const categoryImages = {
@@ -12,45 +12,45 @@ const SearchResults = () => {
     Electronics: require('../images/electronics.png'),
   };
 
-  const [inventory, setInventory] = useState([]); // State to store inventory from Firebase
-  const [searchQuery, setSearchQuery] = useState(''); // State for search query
-  const [filteredInventory, setFilteredInventory] = useState([]); // Filtered inventory based on search
+  const [inventory, setInventory] = useState([]); 
+  const [searchQuery, setSearchQuery] = useState(''); 
+  const [filteredInventory, setFilteredInventory] = useState([]); 
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch inventory data from Firebase Realtime Database
+    
     const inventoryRef = ref(db, 'products');
     onValue(inventoryRef, (snapshot) => {
       const data = snapshot.val();
       const productList = data ? Object.values(data) : [];
       setInventory(productList);
-      setFilteredInventory(productList); // Initially show all products
+      setFilteredInventory(productList); 
     });
   }, []);
 
-  // Search handler
+  
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value); // Update the search query as user types
+    setSearchQuery(event.target.value); 
   };
 
   const handleSearchClick = () => {
-    // Filter products by search query when search button is clicked
+    
     const filtered = inventory.filter((item) =>
       item.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
     setFilteredInventory(filtered);
   };
 
-  // Quick Sort: Sort by price (descending)
+  
   const quickSort = (arr) => {
     if (arr.length <= 1) return arr;
-    const pivot = arr[0]; // First element as pivot
-    const left = arr.filter((item) => parseFloat(item.price) > parseFloat(pivot.price));  // Prices greater than pivot
-    const right = arr.filter((item) => parseFloat(item.price) < parseFloat(pivot.price));  // Prices less than pivot
+    const pivot = arr[0]; 
+    const left = arr.filter((item) => parseFloat(item.price) > parseFloat(pivot.price));  
+    const right = arr.filter((item) => parseFloat(item.price) < parseFloat(pivot.price));  
     return [...quickSort(left), pivot, ...quickSort(right)];
   };
 
-  // Merge Sort: Sort by name (alphabetical)
+  
   const mergeSort = (arr) => {
     if (arr.length <= 1) return arr;
     const mid = Math.floor(arr.length / 2);
@@ -71,7 +71,7 @@ const SearchResults = () => {
     return [...result, ...left, ...right];
   };
 
-  // Shell Sort: Sort by quantity (ascending)
+  
   const shellSort = (arr) => {
     let gap = Math.floor(arr.length / 2);
     while (gap > 0) {
@@ -89,7 +89,7 @@ const SearchResults = () => {
     return arr;
   };
 
-  // Apply sorting algorithms based on the selected option
+  
   const handleSort = (type) => {
     let sortedInventory = [...filteredInventory];
     switch (type) {
@@ -138,11 +138,11 @@ const SearchResults = () => {
             <div
               key={item.id}
               className="product-card"
-              onClick={() => navigate(`/product/${item.id}`)} // Navigate to product details
-              style={{ flex: '1 1 calc(20% - 10px)', margin: '5px' }} // Adjust to show 5 in a row
+              onClick={() => navigate(`/product/${item.id}`)} 
+              style={{ flex: '1 1 calc(20% - 10px)', margin: '5px' }} 
             >
               <img
-                src={categoryImages[item.category] || categoryImages['Electronics']} // Fallback to Electronics image
+                src={categoryImages[item.category] || categoryImages['Electronics']} 
                 alt={item.name}
                 className="product-image"
               />

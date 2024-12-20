@@ -1,16 +1,16 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import '../CSS/EmployeePage.css'; // Import CSS file
+import { useNavigate } from 'react-router-dom'; 
+import '../CSS/EmployeePage.css'; 
 
 const EmployeePage = () => {
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); 
 
-  // Function to navigate to AddProduct page
+  
   const goToAddProduct = () => {
     navigate('/add');
   };
 
-  // Function to navigate to EditProduct page
+  
   const goToEditProduct = () => {
     navigate('/editproduct');
   };

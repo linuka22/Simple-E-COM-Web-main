@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getDatabase, ref, get, update } from 'firebase/database';
-import { app } from './Firebase'; // Import Firebase configuration
-import '../CSS/EditProduct.css'; // Import the CSS file
+import { app } from './Firebase'; 
+import '../CSS/EditProduct.css'; 
 
 const EditProduct = () => {
   const [productId, setProductId] = useState('');
@@ -14,7 +14,7 @@ const EditProduct = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Function to handle product search
+  
   const handleSearch = async () => {
     if (!productId) {
       setError('Product ID is required.');
@@ -40,7 +40,7 @@ const EditProduct = () => {
     setLoading(false);
   };
 
-  // Function to handle form submission
+  
   const handleUpdate = async () => {
     if (!product.name || !product.price || !product.quantity) {
       setError('All fields are required.');

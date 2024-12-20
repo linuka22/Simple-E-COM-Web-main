@@ -6,7 +6,7 @@
   }
 
   .logo img {
-    height: 40px; /* Smaller logo for smaller screens */
+    height: 40px;
   }
 
   .search-bar {
@@ -18,12 +18,12 @@
   }
 
   .search-container {
-    width: 90%; /* Adjust search bar width to fit smaller screens */
+    width: 90%;
   }
 
   .add-product button img {
-    height: 40px; /* Smaller button icon */
-    width: 40px; /* Smaller button icon */
+    height: 40px;
+    width: 40px;
   }
 }
 
@@ -34,7 +34,7 @@
   }
 
   .logo img {
-    height: 35px; /* Even smaller logo for very small screens */
+    height: 35px;
   }
 
   .search-container {
@@ -42,17 +42,17 @@
   }
 
   .search-container input {
-    padding: 10px; /* Simplify padding for smaller screens */
+    padding: 10px;
     font-size: 14px;
   }
 
   .search-container button img {
-    height: 18px; /* Adjust button icon size */
+    height: 18px;
   }
 
   .add-product button img {
-    height: 35px; /* Smaller button icon */
-    width: 35px; /* Smaller button icon */
+    height: 35px;
+    width: 35px;
   }
 }
 
@@ -65,7 +65,8 @@
 }
 
 .logo img {
-  height: 50px; /* Adjust as needed */
+  height: 75px;
+  width: 170px;
 }
 
 .search-bar {
@@ -81,7 +82,7 @@
 
 .search-container input {
   width: 100%;
-  padding: 10px 40px 10px 10px; /* Add padding for the button space */
+  padding: 10px 40px 10px 10px;
   border: 1px solid #ccc;
   border-radius: 25px;
   font-size: 16px;
@@ -114,7 +115,7 @@
 }
 
 .add-product button img {
-  height: 50px; /* Adjust to image size */
-  width: 50px; /* Adjust to image size */
+  height: 50px;
+  width: 50px;
   object-fit: contain;
 }

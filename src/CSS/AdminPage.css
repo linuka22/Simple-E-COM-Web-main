@@ -1,11 +1,11 @@
-/* General Layout */
+
 .admin-page {
   padding: 20px;
   font-family: Arial, sans-serif;
   color: #333;
   background-color: #f9f9f9;
   min-height: 100vh;
-  position: relative; /* For positioning the "Add User" button */
+  position: relative;
 }
 
 .admin-page h1 {
@@ -15,7 +15,7 @@
   color: #007BFF;
 }
 
-/* Top Bar - Positioning the "Add User" Button */
+
 .top-bar {
   position: absolute;
   top: 20px;
@@ -24,7 +24,7 @@
   gap: 15px;
 }
 
-/* Input and Button Styles */
+
 .admin-page input[type="text"] {
   padding: 10px;
   width: 250px;
@@ -53,7 +53,7 @@
   cursor: not-allowed;
 }
 
-/* Search Bar */
+
 .search-bar {
   display: flex;
   gap: 10px;
@@ -69,10 +69,10 @@
 }
 
 .search-bar .view-all-button {
-  margin-left: 20px; /* Added margin for spacing */
+  margin-left: 20px;
 }
 
-/* Sort Buttons */
+
 .sort-buttons {
   margin: 20px 0;
   display: flex;
@@ -85,7 +85,7 @@
   max-width: 200px;
 }
 
-/* Product List */
+
 .product-list {
   margin-top: 30px;
 }
@@ -110,7 +110,7 @@
   font-weight: bold;
 }
 
-/* Chart Section */
+
 .chart-container {
   margin-top: 50px;
   text-align: center;
@@ -121,7 +121,7 @@
   margin: auto;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .admin-page input[type="text"] {
     width: 100%;

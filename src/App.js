@@ -4,15 +4,15 @@ import AddProduct from './components/AddProduct';
 import SearchResults from './components/SearchResults';
 import ProductGrid from './components/ProductGrid';
 import ProductDetails from './components/ProductDetails';
-import LoginPage from './components/login'; // Correct component name
+import LoginPage from './components/login'; 
 import StaffLoginPage from './components/stafflogin';
 import ERoleSelectionPage from './components/RoleSelectionPage';
 import EAdminPage from './components/AdminPage';
 import EEmployeePage from './components/EmployeePage';
 import EEditProduct from './components/EditProduct';
 import { getDatabase, ref, onValue, set } from 'firebase/database';
-import './components/Firebase'; // Ensure Firebase is initialized in this file
-import Header from './components/Header'; // Import Header only here
+import './components/Firebase'; 
+import Header from './components/Header'; 
 import Visualization from "./components/Visualization";
 import EAddUser from "./components/AddUser";
 import Calculate from "./components/Calculate";
@@ -27,17 +27,17 @@ const App = () => {
     const db = getDatabase();
     const inventoryRef = ref(db, 'inventory');
 
-    // Fetch inventory from Firebase
+    
     const unsubscribe = onValue(inventoryRef, (snapshot) => {
       const data = snapshot.val();
       if (data) {
         setInventory(Object.values(data));
       } else {
-        setInventory([]); // Clear inventory if no data exists
+        setInventory([]); 
       }
     });
 
-    return () => unsubscribe(); // Clean up listener on component unmount
+    return () => unsubscribe(); 
   }, []);
 
   const handleAddProduct = (newProduct) => {
@@ -65,12 +65,12 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={<LoginPage />} // Corrected here
+          element={<LoginPage />} 
         />
         <Route path="/roleselection" element={<ERoleSelectionPage />} />
         <Route
           path="/stafflogin"
-          element={<StaffLoginPage />} // Corrected here
+          element={<StaffLoginPage />} 
         />
         <Route path="/adminpage" element={<EAdminPage />} />
         <Route path="/employeepage" element={<EEmployeePage />} />

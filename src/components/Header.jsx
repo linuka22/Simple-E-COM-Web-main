@@ -1,15 +1,15 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../CSS/Header.css'; // Import the CSS file
+import '../CSS/Header.css'; 
 
 const Header = ({ setSearchResults, inventory }) => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-    // Here you can define the behavior of what happens when the search icon is clicked.
-    // This could involve showing all results or any default behavior.
-    setSearchResults(inventory); // Optionally set the search results to the full inventory
-    navigate('/search'); // Navigate to the search page
+    
+    
+    setSearchResults(inventory); 
+    navigate('/search'); 
   };
 
   return (
